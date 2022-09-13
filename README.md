@@ -31,13 +31,30 @@ async def hello(data: DataModel) -> ResponseModel:
 > It is recommended to put the APIs near the `demo` section (L129)
 
 
-## Prepare
+## pip
+
+### Install
+
+```bash
+pip install -e .
+```
+
+### Run
+
+```bash
+uvicorn apis.interface:app --host 0.0.0.0 --port 8123
+```
+
+
+## Docker
+
+### Prepare
 
 ```bash
 export TAG_NAME=xxx
 ```
 
-## Build
+### Build
 
 ```bash
 docker build -t $TAG_NAME .
@@ -49,8 +66,7 @@ If your internet environment lands in China, it might be faster to build with `D
 docker build -t $TAG_NAME -f Dockerfile.cn .
 ```
 
-
-## Run
+### Run
 
 ```bash
 docker run --rm -p 8123:8123 -v /full/path/to/your/client/logs:/workplace/apis/logs $TAG_NAME:latest
